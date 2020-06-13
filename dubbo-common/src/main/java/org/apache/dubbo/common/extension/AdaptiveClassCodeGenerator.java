@@ -93,8 +93,11 @@ public class AdaptiveClassCodeGenerator {
         }
 
         StringBuilder code = new StringBuilder();
+        // 生成 package 代码：package + type 所在包
         code.append(generatePackageInfo());
+        // 生成 import 代码：import + ExtensionLoader 全限定名
         code.append(generateImports());
+        // 生成类代码：public class + type简单名称 + $Adaptive + implements + type全限定名 + {
         code.append(generateClassDeclaration());
 
         Method[] methods = type.getMethods();
